@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakery Shop</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Additional CSS for the online orders button */
+        #order-button {
+            background-color: #ff9900;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #order-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 999;
+        }
+        #order-box label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #order-box input, #order-box textarea {
+            width: calc(100% - 22px);
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        #cancel-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Srinivas's Bakery</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button id="order-button" onclick="toggleOrderBox()">Online Orders</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Welcome to our bakery shop! We offer a wide range of delicious cakes, bread, and chocolates.</p>
+        </section>
+
+        <section id="menu">
+            <h2>Our Menu</h2>
+            <article class="menu-item">
+                <img src="bread1.jpg" alt="bread1">
+                <h3>Fresh Bread</h3>
+                <p>Delicious freshly baked bread made with the finest ingredients.</p>
+            </article>
+            <article class="menu-item">
+                <img src="cake.jpg" alt="Cake">
+                <h3>Cakes</h3>
+                <p>Indulgent cakes for every occasion, from birthdays to weddings.</p>
+            </article>
+            <article class="menu-item">
+                <img src="choclate.jpg" alt="choclate">
+                <h3>Choclates</h3>
+                <p>Indulge in our decadent assortment of handcrafted chocolates at our bakery, a treat for every chocolate lover's palate.</p>
+            </article>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Visit us at: 923 West, Flagstaff</p>
+            <p>Phone: 123-456-7890</p>
+            <p>Email: sn@bakery.com</p>
+        </section>
+
+        <div id="order-box">
+            <button id="cancel-button" onclick="toggleOrderBox()">✖️ Cancel</button>
+            <h2>Place Your Online Order</h2>
+            <form action="order.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+                <label for="address">Home Address:</label>
+                <textarea id="address" name="address" required></textarea>
+
+                <label for="pincode">pincode</label>
+                <input type="tel" id="pincode" name="pincode" required>
+
+                <label for="menu">Menu:</label>
+                <select id="menu" name="menu" required>
+                    <option value="">Select Item</option>
+                    <option value="Fresh Bread">Fresh Bread</option>
+                    <option value="Cakes">Cakes</option>
+                    <option value="Chocolates">Chocolates</option>
+                </select>
+
+                <label for="delivery">Delivery:</label>
+                <input type="radio" id="pickup" name="delivery" value="pickup" required>
+                <label for="pickup">In-store Pickup</label>
+                <input type="radio" id="delivery" name="delivery" value="delivery">
+                <label for="delivery">Delivery</label>
+
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bakery Shop</p>
+    </footer>
+
+    <script>
+        function toggleOrderBox() {
+            var orderBox = document.getElementById('order-box');
+            orderBox.style.display = orderBox.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
+
